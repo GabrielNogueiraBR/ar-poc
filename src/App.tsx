@@ -15,6 +15,8 @@ function App() {
     const dracoLoader = new DRACOLoader();
     const ktx2Loader = new KTX2Loader();
 
+    const canvas = document.querySelector("#ar-poc-canvas")!;
+
     dracoLoader.setDecoderPath(
       "https://www.gstatic.com/draco/versioned/decoders/1.4.1/"
     );
@@ -29,7 +31,27 @@ function App() {
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+      canvas,
     });
+
+    renderer.setClearColor("", 0);
+    renderer.setClearAlpha(0);
+
+    // Realistic render
+    renderer.autoClear = true;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.VSMShadowMap;
+    renderer.physicallyCorrectLights = true;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+
+    // Exposure
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+    // Light
+    const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
+    scene.add(ambientLight);
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
@@ -47,7 +69,7 @@ function App() {
 
     const ArToolkitContext = new THREEx.ArToolkitContext({
       cameraParametersUrl: "/camera_para.dat",
-      detectionMode: "color_and_matrix",
+      detectionMode: "mono",
     });
 
     ArToolkitContext.init(function () {
@@ -71,7 +93,6 @@ function App() {
       (gltf: GLTF) => {
         const model = gltf.scene;
         model.position.set(0, 0, 0);
-        model.scale.set(0.5, 0.5, 0.5);
 
         scene.add(model);
       },
@@ -102,7 +123,7 @@ function App() {
     animate();
   }, []);
 
-  return <canvas></canvas>;
+  return <canvas id="ar-poc-canvas"></canvas>;
 }
 
 export default App;
