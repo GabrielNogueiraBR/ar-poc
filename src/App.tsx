@@ -3,10 +3,27 @@ import React, { useEffect } from "react";
 import * as THREE from "three";
 import * as THREEx from "@ar-js-org/ar.js/three.js/build/ar-threex.js";
 
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader";
+
 function App() {
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.Camera();
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    const ktx2Loader = new KTX2Loader();
+
+    dracoLoader.setDecoderPath(
+      "https://www.gstatic.com/draco/versioned/decoders/1.4.1/"
+    );
+    ktx2Loader.setTranscoderPath(
+      "https://www.gstatic.com/basis-universal/versioned/2021-04-15-ba1c3e4/"
+    );
+
+    loader.setDRACOLoader(dracoLoader);
+    loader.setKTX2Loader(ktx2Loader);
 
     scene.add(camera);
 
@@ -50,13 +67,28 @@ function App() {
 
     scene.visible = false;
 
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshNormalMaterial({
-      side: THREE.DoubleSide,
-    });
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.y = geometry.parameters.height / 2;
-    scene.add(cube);
+    loader.load(
+      "https://storage.googleapis.com/invoker2u-public/models_3d/23a300f3-d992-4979-ac3c-85da1696d14a.glb",
+      (gltf: GLTF) => {
+        const model = gltf.scene;
+        model.scale.set(0.5, 0.5, 0.5);
+
+        scene.add(model);
+      },
+      undefined,
+      (error: any) => {
+        console.error(error);
+        console.log("deu errado");
+      }
+    );
+
+    // const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    // const material = new THREE.MeshNormalMaterial({
+    //   side: THREE.DoubleSide,
+    // });
+    // const cube = new THREE.Mesh(geometry, material);
+    // cube.position.y = geometry.parameters.height / 2;
+    // scene.add(cube);
 
     function animate() {
       requestAnimationFrame(animate);
