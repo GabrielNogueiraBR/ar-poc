@@ -29,7 +29,6 @@ function App() {
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
-      alpha: true,
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -71,6 +70,7 @@ function App() {
       "https://storage.googleapis.com/invoker2u-public/models_3d/23a300f3-d992-4979-ac3c-85da1696d14a.glb",
       (gltf: GLTF) => {
         const model = gltf.scene;
+        model.position.set(0, 0, 0);
         model.scale.set(0.5, 0.5, 0.5);
 
         scene.add(model);
