@@ -88,29 +88,29 @@ function App() {
 
     scene.visible = false;
 
-    // loader.load(
-    //   "https://storage.googleapis.com/invoker2u-public/models_3d/23a300f3-d992-4979-ac3c-85da1696d14a.glb",
-    //   (gltf: GLTF) => {
-    //     const model = gltf.scene;
-    //     model.position.set(0, 0, 0);
+    loader.load(
+      "https://storage.googleapis.com/invoker2u-public/models_3d/23a300f3-d992-4979-ac3c-85da1696d14a.glb",
+      (gltf: GLTF) => {
+        const model = gltf.scene;
+        model.position.set(0, 0, 0);
 
-    //     scene.add(model);
-    //     console.log('Model loaded')
-    //   },
-    //   undefined,
-    //   (error: any) => {
-    //     console.error(error);
-    //     console.log("deu errado");
-    //   }
-    // );
+        scene.add(model);
+        console.log('Model loaded')
+      },
+      undefined,
+      (error: any) => {
+        console.error(error);
+        console.log("deu errado");
+      }
+    );
 
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshNormalMaterial({
-      side: THREE.DoubleSide,
-    });
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.y = geometry.parameters.height / 2;
-    scene.add(cube);
+    // const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    // const material = new THREE.MeshNormalMaterial({
+    //   side: THREE.DoubleSide,
+    // });
+    // const cube = new THREE.Mesh(geometry, material);
+    // cube.position.y = geometry.parameters.height / 2;
+    // scene.add(cube);
 
     function animate() {
       requestAnimationFrame(animate);
