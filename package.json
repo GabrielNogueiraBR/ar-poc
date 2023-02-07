@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ar-js-org/ar.js": "^3.4.3",
-    "ar-js-org": "https://github.com/AR-js-org/AR.js.git#b7c48e04321df4b57ba8321209d3cb111d055500",
+    "ar-js-org": "https://github.com/AR-js-org/AR.js.git#be7c9083df5a651c2ab978ddd7c1a33409c4d40b",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
