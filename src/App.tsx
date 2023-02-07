@@ -93,9 +93,11 @@ function App() {
       (gltf: GLTF) => {
         const model = gltf.scene;
         model.position.set(0, 0, 0);
+        model.rotation.set(0, 0, 0);
+        model.scale.set(2, 2, 2);
 
         scene.add(model);
-        console.log('Model loaded')
+        console.log("Model loaded");
       },
       undefined,
       (error: any) => {
