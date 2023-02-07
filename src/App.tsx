@@ -67,8 +67,6 @@ function App() {
       ArToolkitContext.update(ArToolkitSource.domElement);
       scene.visible = camera.visible;
 
-      console.log("entrou aqui");
-
       renderer.render(scene, camera);
     }
 
