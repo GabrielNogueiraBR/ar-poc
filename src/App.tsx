@@ -53,8 +53,6 @@ function App() {
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshNormalMaterial({
-      transparent: true,
-      opacity: 0.8,
       side: THREE.DoubleSide,
     });
     const cube = new THREE.Mesh(geometry, material);
