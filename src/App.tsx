@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import * as THREE from "three";
-import * as THREEx from '@ar-js-org/ar.js/three.js/build/ar-threex.js';
+import * as THREEx from "@ar-js-org/ar.js/three.js/build/ar-threex.js";
 
 function App() {
   useEffect(() => {
@@ -50,7 +50,7 @@ function App() {
 
     scene.visible = false;
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
     const material = new THREE.MeshNormalMaterial({
       side: THREE.DoubleSide,
     });
