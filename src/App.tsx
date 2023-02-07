@@ -31,7 +31,8 @@ function App() {
 
     const ArToolkitContext = new THREEx.ArToolkitContext({
       cameraParametersUrl: "/camera_para.dat",
-      detectionMode: "color_and_matrix",
+      detectionMode: "mono",
+      matrixCodeType: "4x4_BCH_13_9_3",
     });
 
     ArToolkitContext.init(function () {
@@ -43,7 +44,7 @@ function App() {
       camera,
       {
         type: "barcode",
-        barcodeValue: "07889200",
+        barcodeValue: "456",
         changeMatrixMode: "cameraTransformMatrix",
       }
     );
@@ -65,6 +66,8 @@ function App() {
 
       ArToolkitContext.update(ArToolkitSource.domElement);
       scene.visible = camera.visible;
+
+      console.log("entrou aqui");
 
       renderer.render(scene, camera);
     }
