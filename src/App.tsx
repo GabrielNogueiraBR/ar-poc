@@ -43,7 +43,7 @@ function App() {
       camera,
       {
         type: "barcode",
-        barcodeValue: "https://gabrielnogueirabr-augmented-reality-poc.vercel.app",
+        barcodeValue: "07889200",
         changeMatrixMode: "cameraTransformMatrix",
       }
     );
