@@ -31,8 +31,7 @@ function App() {
 
     const ArToolkitContext = new THREEx.ArToolkitContext({
       cameraParametersUrl: "/camera_para.dat",
-      detectionMode: "mono",
-      matrixCodeType: "4x4_BCH_13_9_3",
+      detectionMode: "color_and_matrix",
     });
 
     ArToolkitContext.init(function () {
@@ -43,8 +42,8 @@ function App() {
       ArToolkitContext,
       camera,
       {
-        type: "barcode",
-        barcodeValue: "456",
+        type: "pattern",
+        patternUrl: "/pattern-marker.patt",
         changeMatrixMode: "cameraTransformMatrix",
       }
     );
