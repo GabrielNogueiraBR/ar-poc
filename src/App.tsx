@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import * as THREE from "three";
-import * as THREEx from "ar-js-org/three.js/build/ar-threex.js";
+import * as THREEx from '@ar-js-org/ar.js/three.js/build/ar-threex.js';
 
 function App() {
   useEffect(() => {

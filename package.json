@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ar-js-org/ar.js": "^3.4.3",
+    "@ar-js-org/ar.js": "3.4.0-alpha-rc1",
     "ar-js-org": "https://github.com/AR-js-org/AR.js.git#be7c9083df5a651c2ab978ddd7c1a33409c4d40b",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
