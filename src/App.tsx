@@ -81,14 +81,14 @@ function App() {
       camera,
       {
         type: "pattern",
-        patternUrl: "/pattern-marker.patt",
+        patternUrl: "/pattern-marker2.patt",
         changeMatrixMode: "cameraTransformMatrix",
         // turn on/off camera smoothing
-        smooth: false,
+        smooth: true,
         // number of matrices to smooth tracking over, more = smoother but slower follow
         smoothCount: 5,
         // distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still
-        smoothTolerance: 0.01,
+        smoothTolerance: 999,
         // threshold for smoothing, will keep still unless enough matrices are over tolerance
         smoothThreshold: 2,
       }
@@ -102,7 +102,7 @@ function App() {
         const model = gltf.scene;
         model.position.set(0, 0, 0);
         model.rotation.set(0, 0, 0);
-        model.scale.set(2, 2, 2);
+        model.scale.set(1, 1, 1);
 
         scene.add(model);
         console.log("Model loaded");
